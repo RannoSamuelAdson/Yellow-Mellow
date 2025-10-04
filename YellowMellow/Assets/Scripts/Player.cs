@@ -47,6 +47,14 @@ public class Player : MonoBehaviour
         Time.timeScale = paused ? 0f : 1f;
     }
 
+    private void Update()
+    {
+        if (StolenItem != null)
+        {
+            ReleaseItem();
+        }
+    }
+
     void FixedUpdate()
     {
         if (playerPaused) {
@@ -57,10 +65,7 @@ public class Player : MonoBehaviour
         ApplyDrag();
         //rb.AddForce(Vector3.up * gravityCompensation, ForceMode.Acceleration);
         HandleSpriteFlip();
-        if (StolenItem != null)
-        {
-            ReleaseItem();
-        }
+
 
     }
 
@@ -90,12 +95,12 @@ public class Player : MonoBehaviour
     }
     void HandleSpriteFlip()
     {
-        if (moveInput.x < -0.01f)
+        if (rb.linearVelocity.x < -0.01f)
         {
             // Moving left
             transform.localScale = new Vector3(-0.5f, 0.5f, 0.5f);
         }
-        else if (moveInput.x > 0.01f)
+        else if (rb.linearVelocity.x > 0.01f)
         {
             // Moving right
             transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
@@ -108,8 +113,10 @@ public class Player : MonoBehaviour
             // Trigger when space is released
             if (Input.GetKeyUp(KeyCode.Space))
             {
-                var droppedItem = Instantiate(StolenItem, transform.position, transform.rotation);
-                //droppedItem.transform.parent = null;
+                StolenItem.transform.parent = null;
+                StolenItem.GetComponent<Rigidbody>().isKinematic = false;
+                StolenItem.GetComponent<Rigidbody>().AddForce(rb.linearVelocity.normalized * acceleration*10f, ForceMode.Acceleration);
+                //var droppedItem = Instantiate(StolenItem, transform.position, transform.rotation);
                 StolenItem = null;
 
             }

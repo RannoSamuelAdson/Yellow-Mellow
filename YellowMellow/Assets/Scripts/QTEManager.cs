@@ -78,7 +78,7 @@ public class QTEManager : MonoBehaviour
         }
 
         int index = Random.Range(0, itemOptions.Count); // upper bound is exclusive
-        return itemOptions[index];
+        return Instantiate(itemOptions[index], player.transform);
     }
 
     void CheckInput()
