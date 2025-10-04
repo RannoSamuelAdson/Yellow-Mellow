@@ -57,6 +57,10 @@ public class Player : MonoBehaviour
         ApplyDrag();
         //rb.AddForce(Vector3.up * gravityCompensation, ForceMode.Acceleration);
         HandleSpriteFlip();
+        if (StolenItem != null)
+        {
+            ReleaseItem();
+        }
 
     }
 
