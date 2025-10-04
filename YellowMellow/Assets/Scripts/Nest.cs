@@ -24,7 +24,7 @@ public class Nest : MonoBehaviour
             netWorthText.text = "Net worth: " + netWorth.ToString("F2") + "$";
         }
 
-        ;
+        
     }
     // Update is called once per frame
     void Update()

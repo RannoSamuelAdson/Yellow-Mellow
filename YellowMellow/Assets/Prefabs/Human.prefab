@@ -107,6 +107,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Human
   goalpoint: {fileID: 0}
   Speed: 3
+  qteManager: {fileID: 0}
+  isWealthy: 0
 --- !u!65 &5827475043666025167
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -126,8 +128,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.99999994, y: 1.0000001, z: 0.2}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 3, y: 6, z: 3}
+  m_Center: {x: 0, y: -0.18, z: 0}
 --- !u!95 &6681277246077862384
 Animator:
   serializedVersion: 7

@@ -1,10 +1,7 @@
 using UnityEngine;
-using System.Collections;
-
 
 public class WealthyHuman : Human
 {
-    public QTEManager qteManager;
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.TryGetComponent<Player>(out Player player))
@@ -13,6 +10,4 @@ public class WealthyHuman : Human
             qteManager.RestartQTE(gameObject);
         }
     }
-
-
 }
