@@ -7,6 +7,7 @@ public class Menu : MonoBehaviour
     public Button backButton;
     public Button quitButton;
     public GameObject SettingsPanel;
+    public GameObject Overlay;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -25,11 +26,15 @@ public class Menu : MonoBehaviour
 
     private void CloseMenu()
     {
-        this.gameObject.SetActive(false);
+        Overlay.gameObject.SetActive(false);
     }
     // Update is called once per frame
     void Update()
     {
-        
+        // Check if ESC key is pressed
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            CloseMenu();
+        }
     }
 }
