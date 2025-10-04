@@ -55,6 +55,7 @@ public class Player : MonoBehaviour
         HandleMovement();
         ApplyDrag();
         //rb.AddForce(Vector3.up * gravityCompensation, ForceMode.Acceleration);
+        HandleSpriteFlip();
 
     }
 
@@ -82,7 +83,19 @@ public class Player : MonoBehaviour
         // Light drag over time
         rb.linearVelocity *= (1f - naturalDrag * Time.fixedDeltaTime);
     }
+    void HandleSpriteFlip()
+    {
+        if (moveInput.x < -0.01f)
+        {
+            // Moving left
+            transform.localScale = new Vector3(-0.5f, 0.5f, 0.5f);
+        }
+        else if (moveInput.x > 0.01f)
+        {
+            // Moving right
+            transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+        }
+    }
 
-    
 
 }

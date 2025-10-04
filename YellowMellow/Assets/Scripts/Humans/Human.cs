@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Human : MonoBehaviour
 {
@@ -16,6 +16,18 @@ public class Human : MonoBehaviour
             goalpoint.position,
             Speed * Time.deltaTime
         );
+
+        if (goalpoint.position.x < transform.position.x)
+        {
+            // Moving left → face left
+            transform.localScale = new Vector3(-0.5f, 0.5f, 0.5f);
+        }
+        else if (goalpoint.position.x > transform.position.x)
+        {
+            // Moving right → face right
+            transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+        }
+
 
         // Destroy if reached
         if (Vector3.Distance(transform.position, goalpoint.position) < 0.1f)
