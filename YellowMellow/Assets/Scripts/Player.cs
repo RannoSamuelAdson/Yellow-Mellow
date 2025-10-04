@@ -35,7 +35,7 @@ public class Player : MonoBehaviour
     void OnEnable() => inputActions.Enable();
     void OnDisable() => inputActions.Disable();
 
-    void Update()
+    void FixedUpdate()
     {
         HandleMovement();
     }
