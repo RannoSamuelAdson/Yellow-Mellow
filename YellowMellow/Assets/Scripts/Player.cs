@@ -115,7 +115,7 @@ public class Player : MonoBehaviour
             {
                 StolenItem.transform.parent = null;
                 StolenItem.GetComponent<Rigidbody>().isKinematic = false;
-                StolenItem.GetComponent<Rigidbody>().AddForce(rb.linearVelocity.normalized * acceleration*10f, ForceMode.Acceleration);
+                StolenItem.GetComponent<Rigidbody>().AddForce(rb.linearVelocity.normalized * acceleration*acceleration, ForceMode.Acceleration);
                 //var droppedItem = Instantiate(StolenItem, transform.position, transform.rotation);
                 StolenItem = null;
 
