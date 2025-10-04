@@ -5,7 +5,7 @@ public class Settings : MonoBehaviour
 {
     public Slider volumeSlider;
     public Toggle muteToggle;
-
+    public Button backButton;
     private float lastVolume = 1f; // to remember volume before mute
 
     void Start()
@@ -17,8 +17,12 @@ public class Settings : MonoBehaviour
         // Add listeners
         volumeSlider.onValueChanged.AddListener(SetVolume);
         muteToggle.onValueChanged.AddListener(ToggleMute);
+        backButton.onClick.AddListener(CloseSettings);
     }
-
+    private void CloseSettings()
+    {
+        this.gameObject.SetActive(false);
+    }
     private void SetVolume(float value)
     {
         AudioListener.volume = value;
