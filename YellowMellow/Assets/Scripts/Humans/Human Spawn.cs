@@ -5,6 +5,8 @@ public class HumanSpawn : MonoBehaviour
     public Transform humanGoalpoint;             // Destination
     public Human humanPrefab;                    // Prefab to spawn
     public Human wealthyHumanPrefab;
+    public QTEManager qteManager;
+
     public float humanSpawnFrequencyBase = 3f;   // Base spawn interval (seconds)
     public float humanSpeedBase = 3f;            // Base speed
 
@@ -31,6 +33,10 @@ public class HumanSpawn : MonoBehaviour
     {
         var wealthyChance = Random.Range(0f, 1f) < 0.25f;
         Human newHuman = Instantiate(wealthyChance ? wealthyHumanPrefab : humanPrefab, transform.position, Quaternion.identity);
+        if (wealthyChance)
+        {
+            (newHuman as WealthyHuman).qteManager = qteManager;
+        }
         newHuman.goalpoint = humanGoalpoint;
 
         // Randomize speed based on base ± randomness

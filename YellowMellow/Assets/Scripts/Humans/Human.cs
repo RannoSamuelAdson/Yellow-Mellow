@@ -8,6 +8,7 @@ public class Human : MonoBehaviour
     void Update()
     {
         if (goalpoint == null) return;
+        if (Player.playerPaused) return;
 
         // Move towards the goal point
         transform.position = Vector3.MoveTowards(

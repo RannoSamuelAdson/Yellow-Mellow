@@ -788,6 +788,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 568402919}
   m_CullTransparentMesh: 1
+--- !u!114 &613953720 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3111928007428743654, guid: fe702cffa4b265a41a1dd14859069887, type: 3}
+  m_PrefabInstance: {fileID: 1607252066041503523}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a066ed8983591d249b87d44e181714d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::QTEManager
 --- !u!1 &661734551
 GameObject:
   m_ObjectHideFlags: 0
@@ -1626,6 +1637,8 @@ MonoBehaviour:
   naturalDrag: 0.1
   gravityCompensation: 7.84
   playerCamera: {fileID: 330585545}
+  stolenItems: []
+  carryLimit: 3
 --- !u!1001 &2080274203
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1678,6 +1691,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Human Spawn (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6598754635654182893, guid: 77ca70ed08a78db448024d8338462ab7, type: 3}
+      propertyPath: qteManager
+      value: 
+      objectReference: {fileID: 613953720}
     - target: {fileID: 6598754635654182893, guid: 77ca70ed08a78db448024d8338462ab7, type: 3}
       propertyPath: humanPrefab
       value: 
@@ -2110,6 +2127,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Human Spawn
       objectReference: {fileID: 0}
+    - target: {fileID: 6598754635654182893, guid: 77ca70ed08a78db448024d8338462ab7, type: 3}
+      propertyPath: qteManager
+      value: 
+      objectReference: {fileID: 613953720}
     - target: {fileID: 6598754635654182893, guid: 77ca70ed08a78db448024d8338462ab7, type: 3}
       propertyPath: humanPrefab
       value: 

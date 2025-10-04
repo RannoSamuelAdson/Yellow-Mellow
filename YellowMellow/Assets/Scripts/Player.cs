@@ -49,7 +49,10 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (playerPaused) return;
+        if (playerPaused) {
+            rb.Sleep();
+            return;
+        };
         HandleMovement();
         ApplyDrag();
         //rb.AddForce(Vector3.up * gravityCompensation, ForceMode.Acceleration);

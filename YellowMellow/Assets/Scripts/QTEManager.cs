@@ -30,15 +30,10 @@ public class QTEManager : MonoBehaviour
 
     private bool movingRight = true;
     private bool isActive = true;
-    public static QTEManager qteManager;
-
-    private void Awake()
-    {
-        qteManager = this;
-    }
+    private GameObject currentWealthyHuman;
     private void Start()
     {
-        originalColor = hitZone.GetComponent<Image>().color;
+        originalColor = Color.green;
     }
 
     void Update()
@@ -71,7 +66,7 @@ public class QTEManager : MonoBehaviour
 
     void CheckInput()
     {
-        if (Player.playerPaused) return;
+        //if (Player.playerPaused) return;
         if (Input.GetKeyDown(actionKey))
         {
             if (IsLineOverHitZone())
@@ -116,8 +111,10 @@ public class QTEManager : MonoBehaviour
     }
 
     // Optional: call this to start a new attempt
-    public void RestartQTE()
+    public void RestartQTE(GameObject wealthyHuman = null)
     {
+        currentWealthyHuman = wealthyHuman;
+        Player.playerPaused = true; // Ensure game is paused
         gameObject.SetActive(true); // Ensure UI is visible
         StopAllCoroutines(); // just in case
         isActive = false;
@@ -127,7 +124,6 @@ public class QTEManager : MonoBehaviour
         RandomizeHitZonePosition();
 
         StartCoroutine(StartAfterFlash());
-
 
     }
 
@@ -173,7 +169,13 @@ public class QTEManager : MonoBehaviour
         }
 
         resultText.color = new Color(startColor.r, startColor.g, startColor.b, 0f);
-        RestartQTE();
+        Player.SetGamePaused(false); // Ensure game is not paused
+        if (currentWealthyHuman != null)
+        {
+            Destroy(currentWealthyHuman);
+            currentWealthyHuman = null;
+        }
+        gameObject.SetActive(false); // Hide QTE UI 
 
     }
     IEnumerator AnimateHitZoneAppear()
@@ -201,9 +203,9 @@ public class QTEManager : MonoBehaviour
         for (int i = 0; i < flashCount; i++)
         {
             zoneImage.color = flashColor;
-            yield return new WaitForSeconds(flashDuration / (flashCount * 2));
+            yield return new WaitForSecondsRealtime(flashDuration / (flashCount * 2));
             zoneImage.color = originalColor;
-            yield return new WaitForSeconds(flashDuration / (flashCount * 2));
+            yield return new WaitForSecondsRealtime(flashDuration / (flashCount * 2));
         }
 
         zoneImage.color = originalColor;
@@ -214,8 +216,9 @@ public class QTEManager : MonoBehaviour
         yield return FlashHitZone();
 
         // Small delay after flash if needed
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSecondsRealtime(0.2f);
         isActive = true; // Now start the QTE movement
+
 
 
     }
@@ -234,10 +237,10 @@ public class QTEManager : MonoBehaviour
         }
 
         img.color = targetColor;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSecondsRealtime(0.5f);
 
         // Reset back to original
-        t = 0;
+        /*t = 0;
         while (t < duration)
         {
             img.color = Color.Lerp(img.color, originalColor, t / duration);
@@ -245,7 +248,7 @@ public class QTEManager : MonoBehaviour
             yield return null;
         }
 
-        img.color = originalColor;
+        img.color = originalColor;*/
         isActive = true; // Now start the QTE movement
 
     }
