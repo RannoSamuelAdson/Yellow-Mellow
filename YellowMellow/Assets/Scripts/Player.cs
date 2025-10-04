@@ -9,6 +9,8 @@ public class Player : MonoBehaviour
     public float maxSpeed = 10f;
     public float verticalSpeed = 10f;
     public float damping = 5f; // How quickly the player slows down
+    public float naturalDrag = 0.1f;   // Light resistance (set to 0 for perfect space)
+
 
     [Header("References")]
     public Camera playerCamera;
@@ -38,6 +40,7 @@ public class Player : MonoBehaviour
     void FixedUpdate()
     {
         HandleMovement();
+        //ApplyDrag();
     }
 
     void HandleMovement()
@@ -48,6 +51,8 @@ public class Player : MonoBehaviour
             inputDirection += Vector3.up;
         else
             inputDirection += Vector3.down;
+
+        inputDirection = inputDirection.normalized;
 
         // Target velocity based on input
         Vector3 targetVelocity = inputDirection * maxSpeed;
@@ -60,5 +65,12 @@ public class Player : MonoBehaviour
         rb.AddForce(accelerationForce, ForceMode.Acceleration);
         // Apply damping to reduce unwanted drift (simulate friction)
         rb.linearVelocity = Vector3.Lerp(rb.linearVelocity, Vector3.zero, damping * Time.fixedDeltaTime);
+    }
+
+
+    void ApplyDrag()
+    {
+        // Light drag over time
+        rb.linearVelocity *= (1f - naturalDrag * Time.fixedDeltaTime);
     }
 }
