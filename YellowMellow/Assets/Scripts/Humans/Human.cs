@@ -30,7 +30,15 @@ public class Human : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if(!isWealthy) return;
+
+        if (!isWealthy) {
+            if (other.gameObject.CompareTag("ValuableItem") && !other.GetComponent<Rigidbody>().isKinematic)
+            {
+                StartWealthyCountdown();
+                Destroy(other.gameObject);
+            }
+            return; 
+        }
         if (other.gameObject.TryGetComponent<Player>(out Player player))
         {
             Debug.Log("Wealthy human intercepted");
@@ -55,9 +63,9 @@ public class Human : MonoBehaviour
         for (int i = 0; i < flashCount; i++)
         {
             GetComponent<SpriteRenderer>().color = originalColor;
-            yield return new WaitForSecondsRealtime(flashDuration / (flashCount * 2));
+            yield return new WaitForSeconds(flashDuration / (flashCount * 2));
             GetComponent<SpriteRenderer>().color = flashColor;
-            yield return new WaitForSecondsRealtime(flashDuration / (flashCount * 2));
+            yield return new WaitForSeconds(flashDuration / (flashCount * 2));
         }
         GetComponent<SpriteRenderer>().color = Color.yellow;
 

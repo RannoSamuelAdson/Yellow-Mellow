@@ -33,10 +33,10 @@ public class HumanSpawn : MonoBehaviour
     {
         var wealthyChance = Random.Range(0f, 1f) < 0.25f;
         Human newHuman = Instantiate(humanPrefab, transform.position, Quaternion.identity);
-        
+        newHuman.qteManager = qteManager;
+
         if (wealthyChance)
         {
-            newHuman.qteManager = qteManager;
             newHuman.isWealthy = true;
             newHuman.GetComponent<SpriteRenderer>().color = Color.yellow;
 
