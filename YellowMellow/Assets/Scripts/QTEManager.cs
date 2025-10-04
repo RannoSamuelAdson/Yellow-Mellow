@@ -31,6 +31,8 @@ public class QTEManager : MonoBehaviour
     private bool movingRight = true;
     private bool isActive = true;
     private GameObject currentWealthyHuman;
+
+    public Player player;
     private void Start()
     {
         originalColor = Color.green;
@@ -99,6 +101,7 @@ public class QTEManager : MonoBehaviour
         successFX?.Play();
         StartCoroutine(AnimateHitZoneResult(successColor));
         ShowResultText("Perfect!", Color.green);
+
     }
 
     void Fail()

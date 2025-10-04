@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
     private Vector2 moveInput;
     private Rigidbody rb;
 
-    public Inventory StolenItems;
+    public ValuableItem StolenItem;
 
 
     void Awake()
