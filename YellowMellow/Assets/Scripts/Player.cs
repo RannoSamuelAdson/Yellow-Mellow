@@ -24,8 +24,9 @@ public class Player : MonoBehaviour
     private Vector2 moveInput;
     private Rigidbody rb;
 
-    public GameObject StolenItem;
-
+    public GameObject stolenItem;
+    public GameObject playerSprite;
+    private bool facingRight = true; // Keep track of facing direction
 
     void Awake()
     {
@@ -49,7 +50,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if (StolenItem != null)
+        if (stolenItem != null)
         {
             ReleaseItem();
         }
@@ -95,15 +96,22 @@ public class Player : MonoBehaviour
     }
     void HandleSpriteFlip()
     {
-        if (rb.linearVelocity.x < -0.01f)
+        float xVel = rb.linearVelocity.x;
+
+        // Small dead zone to prevent jitter near zero velocity
+        const float flipThreshold = 0.1f;
+
+        if (xVel > flipThreshold && !facingRight)
         {
-            // Moving left
-            transform.localScale = new Vector3(-0.5f, 0.5f, 0.5f);
+            facingRight = true;
+            playerSprite.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+            Debug.Log("facing right");
         }
-        else if (rb.linearVelocity.x > 0.01f)
+        else if (xVel < -flipThreshold && facingRight)
         {
-            // Moving right
-            transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+            facingRight = false;
+            playerSprite.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
+            Debug.Log("facing left");
         }
     }
     void ReleaseItem()
@@ -113,11 +121,11 @@ public class Player : MonoBehaviour
             // Trigger when space is released
             if (Input.GetKeyUp(KeyCode.Space))
             {
-                StolenItem.transform.parent = null;
-                StolenItem.GetComponent<Rigidbody>().isKinematic = false;
-                StolenItem.GetComponent<Rigidbody>().AddForce(rb.linearVelocity.normalized * acceleration*acceleration, ForceMode.Acceleration);
+                stolenItem.transform.parent = null;
+                stolenItem.GetComponent<Rigidbody>().isKinematic = false;
+                stolenItem.GetComponent<Rigidbody>().AddForce(rb.linearVelocity.normalized * acceleration*acceleration, ForceMode.Acceleration);
                 //var droppedItem = Instantiate(StolenItem, transform.position, transform.rotation);
-                StolenItem = null;
+                stolenItem = null;
 
             }
         }

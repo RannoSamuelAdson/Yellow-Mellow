@@ -19,13 +19,13 @@ public class Human : MonoBehaviour
 
         if (goalpoint.position.x < transform.position.x)
         {
-            // Moving left → face left
-            transform.localScale = new Vector3(-0.5f, 0.5f, 0.5f);
+            // Moving left → face left (rotate 180° on Y)
+            transform.rotation = Quaternion.Euler(0f, 180f, 0f);
         }
         else if (goalpoint.position.x > transform.position.x)
         {
-            // Moving right → face right
-            transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+            // Moving right → face right (no rotation)
+            transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         }
 
 
