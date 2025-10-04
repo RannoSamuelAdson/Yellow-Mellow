@@ -28,6 +28,8 @@ public class Menu : MonoBehaviour
     {
         Debug.Log("Closing menu");
         Overlay.gameObject.SetActive(false);
+        Player.SetGamePaused(false);
+
     }
     // Update is called once per frame
     void Update()

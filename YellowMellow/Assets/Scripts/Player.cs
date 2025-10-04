@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
     public float damping = 5f; // How quickly the player slows down
     public float naturalDrag = 0.1f;   // Light resistance (set to 0 for perfect space)
     public float gravityCompensation = 9.8f * 0.2f; // 80% counter to gravity
-
+    public static bool playerPaused = false;
 
     [Header("References")]
     public Camera playerCamera;
@@ -36,8 +36,15 @@ public class Player : MonoBehaviour
     void OnEnable() => inputActions.Enable();
     void OnDisable() => inputActions.Disable();
 
+    public static void SetGamePaused(bool paused)
+    {
+        playerPaused = paused;
+        Time.timeScale = paused ? 0f : 1f;
+    }
+
     void FixedUpdate()
     {
+        if (playerPaused) return;
         HandleMovement();
         ApplyDrag();
         //rb.AddForce(Vector3.up * gravityCompensation, ForceMode.Acceleration);

@@ -14,6 +14,7 @@ public class OpenMenuButton : MonoBehaviour
     {
         Debug.Log("Opening Menu");
         Menu.SetActive(true);
+        Player.SetGamePaused(true);
     }
     // Update is called once per frame
     void Update()
