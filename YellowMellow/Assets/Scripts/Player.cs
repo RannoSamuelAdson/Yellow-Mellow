@@ -1,3 +1,5 @@
+using NUnit.Framework;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -20,6 +22,9 @@ public class Player : MonoBehaviour
 
     private Vector2 moveInput;
     private Rigidbody rb;
+
+    public List<ValuableItem> stolenItems = new List<ValuableItem>();
+    public int carryLimit = 3;
 
 
     void Awake()
@@ -74,5 +79,11 @@ public class Player : MonoBehaviour
     {
         // Light drag over time
         rb.linearVelocity *= (1f - naturalDrag * Time.fixedDeltaTime);
+    }
+
+    public void StealItem(ValuableItem item)
+    {
+        if (stolenItems.Count > carryLimit) return;
+        stolenItems.Add(item);
     }
 }

@@ -12,6 +12,7 @@ public class SoundRandomizer : MonoBehaviour
     }
     public void PlayRandomSound()
     {
+        //Debug.Log("Playing sound");
         if (sounds.Length == 0) return;
 
         int index = Random.Range(0, sounds.Length);
