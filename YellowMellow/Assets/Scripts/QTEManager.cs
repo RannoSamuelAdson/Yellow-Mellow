@@ -1,7 +1,9 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
+﻿using NUnit.Framework;
 using System.Collections;
+using System.Collections.Generic;
+using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
 
 public class QTEManager : MonoBehaviour
 {
@@ -31,6 +33,8 @@ public class QTEManager : MonoBehaviour
     private bool movingRight = true;
     private bool isActive = true;
     private GameObject currentWealthyHuman;
+
+    public List<GameObject> itemOptions = new List<GameObject>();
 
     public Player player;
     private void Start()
@@ -64,6 +68,17 @@ public class QTEManager : MonoBehaviour
         {
             movingRight = true;
         }
+    }
+    public GameObject GetRandomItem()
+    {
+        if (itemOptions == null || itemOptions.Count == 0)
+        {
+            Debug.LogWarning("Item list is empty!");
+            return null;
+        }
+
+        int index = Random.Range(0, itemOptions.Count); // upper bound is exclusive
+        return itemOptions[index];
     }
 
     void CheckInput()
@@ -101,7 +116,8 @@ public class QTEManager : MonoBehaviour
         successFX?.Play();
         StartCoroutine(AnimateHitZoneResult(successColor));
         ShowResultText("Perfect!", Color.green);
-
+        player.StolenItem = GetRandomItem();
+        
     }
 
     void Fail()

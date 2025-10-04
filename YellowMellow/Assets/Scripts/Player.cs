@@ -2,6 +2,7 @@ using NUnit.Framework;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.LowLevel;
 
 
 public class Player : MonoBehaviour
@@ -23,7 +24,7 @@ public class Player : MonoBehaviour
     private Vector2 moveInput;
     private Rigidbody rb;
 
-    public ValuableItem StolenItem;
+    public GameObject StolenItem;
 
 
     void Awake()
@@ -39,7 +40,7 @@ public class Player : MonoBehaviour
 
     void OnEnable() => inputActions.Enable();
     void OnDisable() => inputActions.Disable();
-
+   
     public static void SetGamePaused(bool paused)
     {
         playerPaused = paused;
@@ -96,6 +97,16 @@ public class Player : MonoBehaviour
             transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
         }
     }
-
+    void ReleaseItem()
+    {
+        if (!playerPaused)
+        {
+            // Trigger when space is released
+            if (Input.GetKeyUp(KeyCode.Space))
+            {
+                Instantiate(StolenItem, this.transform);
+            }
+        }
+    }
 
 }
