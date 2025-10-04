@@ -66,7 +66,7 @@ public class Human : MonoBehaviour
 
 
     }
-}
+
 
     private void HandleRotation()
     {
