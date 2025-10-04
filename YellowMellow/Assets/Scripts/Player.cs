@@ -23,8 +23,7 @@ public class Player : MonoBehaviour
     private Vector2 moveInput;
     private Rigidbody rb;
 
-    public List<ValuableItem> stolenItems = new List<ValuableItem>();
-    public int carryLimit = 3;
+    public Inventory StolenItems;
 
 
     void Awake()
@@ -84,9 +83,6 @@ public class Player : MonoBehaviour
         rb.linearVelocity *= (1f - naturalDrag * Time.fixedDeltaTime);
     }
 
-    public void StealItem(ValuableItem item)
-    {
-        if (stolenItems.Count > carryLimit) return;
-        stolenItems.Add(item);
-    }
+    
+
 }

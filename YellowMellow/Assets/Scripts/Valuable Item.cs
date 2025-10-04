@@ -5,6 +5,7 @@ public class ValuableItem : MonoBehaviour
     public Sprite sprite;
     public float value = 1f;
 
+    public 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -15,5 +16,9 @@ public class ValuableItem : MonoBehaviour
     void Update()
     {
         
+    }
+    public void Drop()
+    {
+
     }
 }
