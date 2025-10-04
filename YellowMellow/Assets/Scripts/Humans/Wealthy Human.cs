@@ -4,7 +4,7 @@ using System.Collections;
 
 public class WealthyHuman : Human
 {
-    public QTEManager qteManager;
+    /*public QTEManager qteManager;
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.TryGetComponent<Player>(out Player player))
@@ -12,7 +12,7 @@ public class WealthyHuman : Human
             Debug.Log("Wealthy human intercepted");
             qteManager.RestartQTE(gameObject);
         }
-    }
+    }*/
 
 
 }

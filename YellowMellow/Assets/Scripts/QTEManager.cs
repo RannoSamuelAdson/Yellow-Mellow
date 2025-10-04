@@ -29,10 +29,11 @@ public class QTEManager : MonoBehaviour
     public Color successColor = Color.green;
     public Color failColor = Color.red;
     private Color originalColor;
+    private bool wasSuccessful = false;
 
     private bool movingRight = true;
     private bool isActive = true;
-    private GameObject currentWealthyHuman;
+    private Human currentWealthyHuman;
 
     public List<GameObject> itemOptions = new List<GameObject>();
 
@@ -112,6 +113,7 @@ public class QTEManager : MonoBehaviour
     void Success()
     {
         isActive = false;
+        wasSuccessful = true;
         // Add success logic here (animation, next stage, etc.)
         successFX?.Play();
         StartCoroutine(AnimateHitZoneResult(successColor));
@@ -123,6 +125,7 @@ public class QTEManager : MonoBehaviour
     void Fail()
     {
         isActive = false;
+        wasSuccessful = false;
         // Add fail logic here (shake, retry, etc.)
         failFX?.Play();
         StartCoroutine(AnimateHitZoneResult(failColor));
@@ -130,7 +133,7 @@ public class QTEManager : MonoBehaviour
     }
 
     // Optional: call this to start a new attempt
-    public void RestartQTE(GameObject wealthyHuman = null)
+    public void RestartQTE(Human wealthyHuman = null)
     {
         currentWealthyHuman = wealthyHuman;
         Player.playerPaused = true; // Ensure game is paused
@@ -191,7 +194,20 @@ public class QTEManager : MonoBehaviour
         Player.SetGamePaused(false); // Ensure game is not paused
         if (currentWealthyHuman != null)
         {
-            Destroy(currentWealthyHuman);
+            if (wasSuccessful)
+            {
+                // Reward player
+                Debug.Log("Player rewarded for successful QTE!");
+                currentWealthyHuman.GetComponent<SpriteRenderer>().color = Color.white;
+                currentWealthyHuman.isWealthy = false;
+                currentWealthyHuman.Speed *= 1.5f; // Speed up after being caught
+            }
+            else
+            {
+                // Optionally penalize player
+                Debug.Log("Player failed the QTE.");
+                currentWealthyHuman.StartWealthyCountdown();
+            }
             currentWealthyHuman = null;
         }
         gameObject.SetActive(false); // Hide QTE UI 
