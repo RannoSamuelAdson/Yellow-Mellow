@@ -108,7 +108,10 @@ public class Player : MonoBehaviour
             // Trigger when space is released
             if (Input.GetKeyUp(KeyCode.Space))
             {
-                Instantiate(StolenItem, this.transform);
+                var droppedItem = Instantiate(StolenItem, transform.position, transform.rotation);
+                //droppedItem.transform.parent = null;
+                StolenItem = null;
+
             }
         }
     }
