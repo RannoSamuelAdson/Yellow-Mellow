@@ -29,7 +29,8 @@ public class HumanSpawn : MonoBehaviour
 
     private void SpawnHuman()
     {
-        Human newHuman = Instantiate(humanPrefab, transform.position, Quaternion.identity);
+        var wealthyChance = Random.Range(0f, 1f) < 0.25f;
+        Human newHuman = Instantiate(wealthyChance ? wealthyHumanPrefab : humanPrefab, transform.position, Quaternion.identity);
         newHuman.goalpoint = humanGoalpoint;
 
         // Randomize speed based on base ± randomness

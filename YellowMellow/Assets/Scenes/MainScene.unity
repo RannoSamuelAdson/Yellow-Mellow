@@ -1396,6 +1396,10 @@ PrefabInstance:
       propertyPath: humanGoalpoint
       value: 
       objectReference: {fileID: 939678761}
+    - target: {fileID: 6598754635654182893, guid: 77ca70ed08a78db448024d8338462ab7, type: 3}
+      propertyPath: wealthyHumanPrefab
+      value: 
+      objectReference: {fileID: 2035811220432794765, guid: 0cff708925a82534d8e998c507293e04, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1727,6 +1731,10 @@ PrefabInstance:
       propertyPath: humanGoalpoint
       value: 
       objectReference: {fileID: 2080274204}
+    - target: {fileID: 6598754635654182893, guid: 77ca70ed08a78db448024d8338462ab7, type: 3}
+      propertyPath: wealthyHumanPrefab
+      value: 
+      objectReference: {fileID: 2035811220432794765, guid: 0cff708925a82534d8e998c507293e04, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

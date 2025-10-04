@@ -7,6 +7,7 @@ public class WealthyHuman : Human
         if (other.gameObject.TryGetComponent<Player>(out Player player))
         {
             Debug.Log("Wealthy human intercepted");
+            QTEManager.qteManager.RestartQTE();
             return;
         }
     }

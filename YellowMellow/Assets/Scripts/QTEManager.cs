@@ -30,7 +30,12 @@ public class QTEManager : MonoBehaviour
 
     private bool movingRight = true;
     private bool isActive = true;
+    public static QTEManager qteManager;
 
+    private void Awake()
+    {
+        qteManager = this;
+    }
     private void Start()
     {
         originalColor = hitZone.GetComponent<Image>().color;
@@ -113,6 +118,7 @@ public class QTEManager : MonoBehaviour
     // Optional: call this to start a new attempt
     public void RestartQTE()
     {
+        gameObject.SetActive(true); // Ensure UI is visible
         StopAllCoroutines(); // just in case
         isActive = false;
 
@@ -167,7 +173,7 @@ public class QTEManager : MonoBehaviour
         }
 
         resultText.color = new Color(startColor.r, startColor.g, startColor.b, 0f);
-        //RestartQTE();
+        RestartQTE();
 
     }
     IEnumerator AnimateHitZoneAppear()
