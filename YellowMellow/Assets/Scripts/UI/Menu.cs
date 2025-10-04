@@ -26,6 +26,7 @@ public class Menu : MonoBehaviour
 
     private void CloseMenu()
     {
+        Debug.Log("Closing menu");
         Overlay.gameObject.SetActive(false);
     }
     // Update is called once per frame

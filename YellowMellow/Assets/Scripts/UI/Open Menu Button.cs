@@ -12,6 +12,7 @@ public class OpenMenuButton : MonoBehaviour
     }
     private void OpenMenu()
     {
+        Debug.Log("Opening Menu");
         Menu.SetActive(true);
     }
     // Update is called once per frame
