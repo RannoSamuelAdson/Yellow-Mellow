@@ -118,7 +118,7 @@ public class QTEManager : MonoBehaviour
         successFX?.Play();
         StartCoroutine(AnimateHitZoneResult(successColor));
         ShowResultText("Perfect!", Color.green);
-        player.StolenItem = GetRandomItem();
+        player.stolenItem = GetRandomItem();
         
     }
 

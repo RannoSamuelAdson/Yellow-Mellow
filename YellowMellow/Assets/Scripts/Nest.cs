@@ -1,11 +1,14 @@
 using NUnit.Framework;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Nest : MonoBehaviour
 {
     private List<ValuableItem> hoard = new List<ValuableItem>();
     public float netWorth = 0f;
+    public TMP_Text netWorthText;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -18,9 +21,10 @@ public class Nest : MonoBehaviour
             hoard.Add(item);
             netWorth += item.value;
             Destroy(other);
+            netWorthText.text = "Net worth: " + netWorth.ToString("F2") + "$";
         }
 
-        ;
+        
     }
     // Update is called once per frame
     void Update()
