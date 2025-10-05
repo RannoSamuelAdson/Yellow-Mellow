@@ -108,10 +108,14 @@ public class Player : MonoBehaviour
         {
             facingRight = true;
             playerSprite.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+            if (stolenItem != null)
+                stolenItem.transform.position = transform.position - new Vector3(0.6f, 0.6f, 0);
             //Debug.Log("facing right");
         }
         else if (xVel < -flipThreshold && facingRight)
         {
+            if (stolenItem != null)
+                stolenItem.transform.position = transform.position - new Vector3(-0.6f, 0.6f, 0);
             facingRight = false;
             playerSprite.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
             //Debug.Log("facing left");
