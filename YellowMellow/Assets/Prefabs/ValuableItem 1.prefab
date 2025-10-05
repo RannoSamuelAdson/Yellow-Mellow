@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 5723537138859117578}
   - component: {fileID: 4730019617009051484}
   - component: {fileID: 5985380459794666980}
-  - component: {fileID: 1574235154767627688}
   - component: {fileID: 694741490875505745}
+  - component: {fileID: 2591884616366749024}
   m_Layer: 7
   m_Name: ValuableItem 1
   m_TagString: ValuableItem
@@ -82,8 +82,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1287649992867056945, guid: 6eaa9958d83ec43499e946a21edba283, type: 3}
-  m_Color: {r: 0.9622642, g: 0.8919783, b: 0.18609825, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 7dfb6fdc6f2bbcf4f889c5a924c39e3d, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -107,27 +107,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ValuableItem
   sprite: {fileID: 0}
   value: 1
---- !u!135 &1574235154767627688
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7035913708783400202}
-  m_Material: {fileID: 13400000, guid: 29866f3df24dfbc40af8ecef5231ff44, type: 2}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 64
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.2
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &694741490875505745
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -155,3 +134,26 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 56
   m_CollisionDetection: 0
+--- !u!136 &2591884616366749024
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7035913708783400202}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.2
+  m_Height: 3
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}

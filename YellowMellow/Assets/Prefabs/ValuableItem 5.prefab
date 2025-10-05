@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1574235154767627688}
   - component: {fileID: 694741490875505745}
   m_Layer: 7
-  m_Name: ValuableItem 2
+  m_Name: ValuableItem 5
   m_TagString: ValuableItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -82,7 +82,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 2a75ae025eac47349b634b48c2c97c97, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 389ff38f186262249bd9cdd77cb90b9f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

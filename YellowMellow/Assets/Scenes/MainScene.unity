@@ -4670,7 +4670,7 @@ PrefabInstance:
       objectReference: {fileID: 1307315439}
     - target: {fileID: 3111928007428743654, guid: fe702cffa4b265a41a1dd14859069887, type: 3}
       propertyPath: itemOptions.Array.size
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3111928007428743654, guid: fe702cffa4b265a41a1dd14859069887, type: 3}
       propertyPath: 'itemOptions.Array.data[0]'
@@ -4684,6 +4684,18 @@ PrefabInstance:
       propertyPath: 'itemOptions.Array.data[2]'
       value: 
       objectReference: {fileID: 7035913708783400202, guid: 076d9da0c15e121499c30911d41c5167, type: 3}
+    - target: {fileID: 3111928007428743654, guid: fe702cffa4b265a41a1dd14859069887, type: 3}
+      propertyPath: 'itemOptions.Array.data[3]'
+      value: 
+      objectReference: {fileID: 7035913708783400202, guid: 1bd13e0d19414c0429a0c439ba453cba, type: 3}
+    - target: {fileID: 3111928007428743654, guid: fe702cffa4b265a41a1dd14859069887, type: 3}
+      propertyPath: 'itemOptions.Array.data[4]'
+      value: 
+      objectReference: {fileID: 7035913708783400202, guid: c8a28e36c21188e43ac1907f358cfb49, type: 3}
+    - target: {fileID: 3111928007428743654, guid: fe702cffa4b265a41a1dd14859069887, type: 3}
+      propertyPath: 'itemOptions.Array.data[5]'
+      value: 
+      objectReference: {fileID: 7035913708783400202, guid: c0f0bea2340c41246bcbeabff48b5701, type: 3}
     - target: {fileID: 5137998419570608666, guid: fe702cffa4b265a41a1dd14859069887, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5985380459794666980}
   - component: {fileID: 1574235154767627688}
   - component: {fileID: 694741490875505745}
+  - component: {fileID: 6396534625060295018}
   m_Layer: 7
   m_Name: ValuableItem
   m_TagString: ValuableItem
@@ -82,8 +83,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
-  m_Color: {r: 0.9716981, g: 0.5156674, b: 0.12375401, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 6fc42b8b100b1374ab06b51cf9bd6a3d, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -126,7 +127,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.4
+  m_Radius: 1.4
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &694741490875505745
 Rigidbody:
@@ -155,3 +156,25 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 56
   m_CollisionDetection: 0
+--- !u!64 &6396534625060295018
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7035913708783400202}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
