@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4730019617009051484}
   - component: {fileID: 5985380459794666980}
   - component: {fileID: 694741490875505745}
-  - component: {fileID: 2591884616366749024}
+  - component: {fileID: 2256410770182203564}
   m_Layer: 7
   m_Name: ValuableItem 1
   m_TagString: ValuableItem
@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0.1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -106,7 +106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ValuableItem
   sprite: {fileID: 0}
-  value: 1
+  value: 3
 --- !u!54 &694741490875505745
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -134,8 +134,8 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 56
   m_CollisionDetection: 0
---- !u!136 &2591884616366749024
-CapsuleCollider:
+--- !u!135 &2256410770182203564
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -152,8 +152,6 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 1.2
-  m_Height: 3
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  serializedVersion: 3
+  m_Radius: 1.5
+  m_Center: {x: -0.1, y: 0, z: 0}

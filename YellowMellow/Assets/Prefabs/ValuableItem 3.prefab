@@ -106,7 +106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ValuableItem
   sprite: {fileID: 0}
-  value: 1
+  value: 2
 --- !u!135 &1574235154767627688
 SphereCollider:
   m_ObjectHideFlags: 0

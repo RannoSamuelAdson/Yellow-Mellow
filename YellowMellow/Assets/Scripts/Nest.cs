@@ -20,7 +20,7 @@ public class Nest : MonoBehaviour
         {
             hoard.Add(item);
             netWorth += item.value;
-            Destroy(other);
+            Destroy(item.gameObject);
             netWorthText.text = "Net worth: " + netWorth.ToString("F2") + "$";
         }
 

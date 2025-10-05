@@ -20,6 +20,8 @@ public class QTEManager : MonoBehaviour
     public float flashDuration = 0.3f;
     public int flashCount = 3;
     public KeyCode actionKey = KeyCode.Space;
+    public float hitAreaMinBounds = 55f;
+    public float hitAreaMaxBounds = 80f;
 
     [Header("Feedback")]
     public ParticleSystem successFX;
@@ -61,11 +63,11 @@ public class QTEManager : MonoBehaviour
         float halfLineWidth = movingLine.rect.width / 2f;
 
         // Clamp and reverse direction
-        if (movingLine.anchoredPosition.x >= halfAreaWidth - halfLineWidth)
+        if (movingLine.anchoredPosition.x >= halfAreaWidth - halfLineWidth - hitAreaMaxBounds)
         {
             movingRight = false;
         }
-        else if (movingLine.anchoredPosition.x <= -halfAreaWidth + halfLineWidth)
+        else if (movingLine.anchoredPosition.x <= -halfAreaWidth + halfLineWidth + hitAreaMinBounds)
         {
             movingRight = true;
         }
@@ -161,7 +163,7 @@ public class QTEManager : MonoBehaviour
         isActive = false;
 
         movingRight = Random.Range(0, 2) == 1;
-        movingLine.anchoredPosition = new Vector2(movingRight ? -movementArea.rect.width / 2f : movementArea.rect.width / 2f, movingLine.anchoredPosition.y);
+        movingLine.anchoredPosition = new Vector2(movingRight ? -movementArea.rect.width / 2f + hitAreaMinBounds : movementArea.rect.width / 2f - hitAreaMaxBounds, movingLine.anchoredPosition.y);
         RandomizeHitZonePosition();
 
         StartCoroutine(StartAfterFlash());
@@ -174,7 +176,7 @@ public class QTEManager : MonoBehaviour
         float zoneWidth = hitZone.rect.width;
 
         float maxX = (areaWidth - zoneWidth) / 2f;
-        float randomX = Random.Range(-maxX, maxX);
+        float randomX = Random.Range(-maxX+hitAreaMinBounds, maxX-hitAreaMaxBounds);
 
         hitZone.anchoredPosition = new Vector2(randomX, hitZone.anchoredPosition.y);
 
