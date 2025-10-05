@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Menu : MonoBehaviour
@@ -15,6 +17,7 @@ public class Menu : MonoBehaviour
         backButton.onClick.AddListener(CloseMenu);
         quitButton.onClick.AddListener(Quit);
     }
+
     private void OpenSettings()
     {
         SettingsPanel.SetActive(true);

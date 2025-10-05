@@ -32,6 +32,7 @@ public class Human : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
+        if(Player.playerPaused) return;
 
         if (!isWealthy) {
             if (other.gameObject.CompareTag("ValuableItem") && !other.GetComponent<Rigidbody>().isKinematic)

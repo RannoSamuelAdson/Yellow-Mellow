@@ -17,6 +17,7 @@ public class Tutorial : MonoBehaviour
     public GameObject minigameTutorial;
     public GameObject returnTutorial;
     public QTEManager QTEmanager;
+    public Timer timer;
     public Nest nest;
     private TutorialState tutorialState = TutorialState.StartPanel;
 
@@ -30,6 +31,7 @@ public class Tutorial : MonoBehaviour
         startPanel.gameObject.SetActive(false);
         tutorialState = TutorialState.MoveTutorial;
         moveTutuorial.gameObject.SetActive(true);
+        timer.timerIsRunning = true;
     }
     // Update is called once per frame
     void Update()
