@@ -60,18 +60,31 @@ public class Human : MonoBehaviour
         isWealthy = false; // Temporarily disable interaction
         Color originalColor = Color.white;
         Color flashColor = Color.yellowGreen;
-
+        SpriteRenderer spriterenderer = sprite.GetComponent<SpriteRenderer>();
         int flashCount = 5;
         float flashDuration = 2f;
 
         for (int i = 0; i < flashCount; i++)
         {
-            sprite.GetComponent<SpriteRenderer>().color = originalColor;
-            yield return new WaitForSeconds(flashDuration / (flashCount * 2));
-            sprite.GetComponent<SpriteRenderer>().color = flashColor;
-            yield return new WaitForSeconds(flashDuration / (flashCount * 2));
+            float t = 0f;
+            while (t < flashDuration / (flashCount * 2))
+            {
+                float alpha = Mathf.Lerp(1f, 0.3f, t / (flashDuration / (flashCount * 2)));
+                spriterenderer.color = new Color(originalColor.r, originalColor.g, originalColor.b, alpha);
+                t += Time.deltaTime;
+                yield return null;
+            }
+
+            t = 0f;
+            while (t < flashDuration / (flashCount * 2))
+            {
+                float alpha = Mathf.Lerp(0.3f, 1f, t / (flashDuration / (flashCount * 2)));
+                spriterenderer.color = new Color(originalColor.r, originalColor.g, originalColor.b, alpha);
+                t += Time.deltaTime;
+                yield return null;
+            }
         }
-        sprite.GetComponent<SpriteRenderer>().color = Color.yellow;
+        //sprite.GetComponent<SpriteRenderer>().color = Color.yellow;
 
         isWealthy = true; // Now start the QTE movement
 
