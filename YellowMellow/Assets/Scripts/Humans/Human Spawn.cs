@@ -38,7 +38,7 @@ public class HumanSpawn : MonoBehaviour
         if (wealthyChance)
         {
             newHuman.isWealthy = true;
-            newHuman.GetComponent<SpriteRenderer>().color = Color.yellow;
+            newHuman.sprite.GetComponent<SpriteRenderer>().color = Color.yellow;
 
         }
         newHuman.goalpoint = humanGoalpoint;
