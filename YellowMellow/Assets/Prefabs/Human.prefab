@@ -53,7 +53,23 @@ MonoBehaviour:
   tutorialText: {fileID: 5281548145730563872}
   sprite: {fileID: 4306369593939829949}
   wealthyIndicator: {fileID: 2306719297995349124}
+  valuableItemSprites:
+  - {fileID: 21300000, guid: 2c71f3523434e844b874ec85558ac341, type: 3}
+  - {fileID: 21300000, guid: c377c26855de7314bb9a70f087421eef, type: 3}
+  - {fileID: 21300000, guid: 7f61e5f6d84dcae42b642eb2d1abdb5a, type: 3}
+  animatorControllers:
+  - {fileID: 9100000, guid: 9590638dd7950014eacbec2357fcd366, type: 2}
+  - {fileID: 9100000, guid: 4ddd0a933007e314bbb12f1e7cf98cf8, type: 2}
+  - {fileID: 9100000, guid: 0fce54f3224a5824ba2028a7fc36eb2e, type: 2}
   isWealthy: 0
+  itemOptions:
+  - {fileID: 7035913708783400202, guid: 7e0c749f5e9385c4ba72a2078bbba12e, type: 3}
+  - {fileID: 7035913708783400202, guid: e5000080a8f5536499a8dff8180c7e58, type: 3}
+  - {fileID: 7035913708783400202, guid: 076d9da0c15e121499c30911d41c5167, type: 3}
+  - {fileID: 7035913708783400202, guid: 1bd13e0d19414c0429a0c439ba453cba, type: 3}
+  - {fileID: 7035913708783400202, guid: c8a28e36c21188e43ac1907f358cfb49, type: 3}
+  - {fileID: 7035913708783400202, guid: c0f0bea2340c41246bcbeabff48b5701, type: 3}
+  chosenItem: {fileID: 0}
 --- !u!65 &5827475043666025167
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -578,11 +594,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1738042570558535050, guid: ea7ed09b845341b4bbae2f6d46aabcc7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.812
+      value: 3.18
       objectReference: {fileID: 0}
     - target: {fileID: 1738042570558535050, guid: ea7ed09b845341b4bbae2f6d46aabcc7, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.1
       objectReference: {fileID: 0}
     - target: {fileID: 1738042570558535050, guid: ea7ed09b845341b4bbae2f6d46aabcc7, type: 3}
       propertyPath: m_LocalRotation.w

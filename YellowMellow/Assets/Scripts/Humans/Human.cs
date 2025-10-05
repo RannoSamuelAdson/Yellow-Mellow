@@ -1,5 +1,8 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor.Animations;
+using UnityEngine;
 
 public class Human : MonoBehaviour
 {
@@ -9,8 +12,13 @@ public class Human : MonoBehaviour
     public GameObject tutorialText;
     public GameObject sprite;
     public GameObject wealthyIndicator;
+    public Sprite[] valuableItemSprites; // Array of item sprites
+    public AnimatorController[] animatorControllers; // Reference to Animator Controllers
 
     public bool isWealthy = false; // track if upgraded
+    public List<GameObject> itemOptions = new List<GameObject>();
+    public GameObject chosenItem = null;
+
 
     void Update()
     {
@@ -31,6 +39,17 @@ public class Human : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    public void GetRandomItem()
+    {
+        if (itemOptions == null || itemOptions.Count == 0)
+        {
+            Debug.LogWarning("Item list is empty!");
+            return;
+        }
+
+        int index = Random.Range(0, itemOptions.Count); // upper bound is exclusive
+        chosenItem = itemOptions[index];
+    }
     private void OnTriggerEnter(Collider other)
     {
         if(Player.playerPaused) return;
@@ -38,7 +57,11 @@ public class Human : MonoBehaviour
         if (!isWealthy) {
             if (other.gameObject.CompareTag("ValuableItem") && !other.GetComponent<Rigidbody>().isKinematic)
             {
+                var value = other.GetComponent<ValuableItem>().value;
+                chosenItem = other.gameObject;
+                SetIndicatorVisuals(value);
                 StartWealthyCountdown();
+                wealthyIndicator.SetActive(true);
                 Destroy(other.gameObject);
             }
             return; 
@@ -46,7 +69,28 @@ public class Human : MonoBehaviour
         if (other.gameObject.TryGetComponent<Player>(out Player player))
         {
             Debug.Log("Wealthy human intercepted");
-            qteManager.RestartQTE(this);
+            qteManager.RestartQTE(this, itemOptions.IndexOf(chosenItem));
+        }
+    }
+    public void SetIndicatorVisuals(float value)
+    {
+        if (value < 5)
+        {
+            wealthyIndicator.GetComponent<Animator>().runtimeAnimatorController = animatorControllers[0];
+            wealthyIndicator.GetComponent<SpriteRenderer>().sprite = valuableItemSprites[0];
+
+        }
+        else if (value < 10)
+        {
+            wealthyIndicator.GetComponent<Animator>().runtimeAnimatorController = animatorControllers[1];
+            wealthyIndicator.GetComponent<SpriteRenderer>().sprite = valuableItemSprites[1];
+
+        }
+        else
+        {
+            wealthyIndicator.GetComponent<Animator>().runtimeAnimatorController = animatorControllers[2];
+            wealthyIndicator.GetComponent<SpriteRenderer>().sprite = valuableItemSprites[2];
+
         }
     }
     public void StartWealthyCountdown()

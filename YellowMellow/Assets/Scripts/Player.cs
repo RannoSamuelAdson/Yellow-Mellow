@@ -29,6 +29,7 @@ public class Player : MonoBehaviour
     public GameObject playerSprite;
     private bool facingRight = true; // Keep track of facing direction
 
+
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -70,6 +71,7 @@ public class Player : MonoBehaviour
 
 
     }
+
 
     void HandleMovement()
     {

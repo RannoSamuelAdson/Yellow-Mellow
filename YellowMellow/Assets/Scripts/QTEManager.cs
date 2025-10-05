@@ -38,6 +38,7 @@ public class QTEManager : MonoBehaviour
     private Human currentWealthyHuman;
 
     public List<GameObject> itemOptions = new List<GameObject>();
+    public int currentItem = 0;
 
     public Player player;
     private void Start()
@@ -120,8 +121,8 @@ public class QTEManager : MonoBehaviour
         successFX?.Play();
         StartCoroutine(AnimateHitZoneResult(successColor));
         ShowResultText("Perfect!", Color.green);
-        GameObject gainedItem = GetRandomItem();
-        if (player.stolenItem != null)
+        GameObject gainedItem = Instantiate(itemOptions[currentItem], player.transform);
+        /*if (player.stolenItem != null)
         {
             ValuableItem gainedItemScript = gainedItem.GetComponent<ValuableItem>();
             ValuableItem existingitemScript = player.stolenItem.GetComponent<ValuableItem>();
@@ -138,7 +139,7 @@ public class QTEManager : MonoBehaviour
                 return;
             }
 
-        }
+        }*/
         player.stolenItem = gainedItem;
         
     }
@@ -154,8 +155,9 @@ public class QTEManager : MonoBehaviour
     }
 
     // Optional: call this to start a new attempt
-    public void RestartQTE(Human wealthyHuman = null)
+    public void RestartQTE(Human wealthyHuman = null, int chosenItem = 0)
     {
+        currentItem = chosenItem;
         currentWealthyHuman = wealthyHuman;
         Player.playerPaused = true; // Ensure game is paused
         gameObject.SetActive(true); // Ensure UI is visible
