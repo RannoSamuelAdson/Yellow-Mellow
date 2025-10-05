@@ -58,7 +58,7 @@ public class Tutorial : MonoBehaviour
                 {
                     human.setTutorialActiveState(true);
                 }
-                if (QTEmanager.isActive) { 
+                if (QTEmanager.gameObject.activeSelf) { 
                     minigameTutorial.SetActive(true);
                     tutorialState = TutorialState.MinigameTutorial;
                     Human[] humans2 = FindObjectsByType<Human>(FindObjectsSortMode.None);

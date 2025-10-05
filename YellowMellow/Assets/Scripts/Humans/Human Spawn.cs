@@ -31,7 +31,7 @@ public class HumanSpawn : MonoBehaviour
 
     private void SpawnHuman()
     {
-        var wealthyChance = Random.Range(0f, 1f) < 0.25f;
+        var wealthyChance = Random.Range(0f, 1f) < 0.4f;
         Human newHuman = Instantiate(humanPrefab, transform.position, Quaternion.identity);
         newHuman.qteManager = qteManager;
 
@@ -39,7 +39,7 @@ public class HumanSpawn : MonoBehaviour
         {
             newHuman.isWealthy = true;
             newHuman.wealthyIndicator.SetActive(true);
-            newHuman.sprite.GetComponent<SpriteRenderer>().color = Color.yellow;
+            //newHuman.sprite.GetComponent<SpriteRenderer>().color = Color.yellow;
 
         }
         newHuman.goalpoint = humanGoalpoint;
