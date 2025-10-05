@@ -435,6 +435,17 @@ Transform:
   - {fileID: 460898616}
   m_Father: {fileID: 196191051}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!114 &83130364 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 258413507289389574, guid: fe702cffa4b265a41a1dd14859069887, type: 3}
+  m_PrefabInstance: {fileID: 1607252066041503523}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!1 &84317755
 GameObject:
   m_ObjectHideFlags: 0
@@ -5087,6 +5098,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7118078383159147473, guid: 17213c3b5eee5cc488b9bf8d5a39c2bb, type: 3}
   m_PrefabInstance: {fileID: 1946085571}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1413125191 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8130829285696833484, guid: fe702cffa4b265a41a1dd14859069887, type: 3}
+  m_PrefabInstance: {fileID: 1607252066041503523}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!1001 &1420876315
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6730,6 +6752,8 @@ MonoBehaviour:
   - {fileID: 1607252066041503526}
   - {fileID: 1607252066041503525}
   - {fileID: 1607252066041503524}
+  - {fileID: 1413125191}
+  - {fileID: 83130364}
 --- !u!114 &2121385838
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6743,10 +6767,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SoundRandomizer
   sounds:
-  - {fileID: 8300000, guid: da4666743c7811948995abecdebc99d5, type: 3}
-  - {fileID: 8300000, guid: 17439e1f009f0c841b7970186f701d2a, type: 3}
-  - {fileID: 8300000, guid: b134591e8ce990a4ab7b7f9b42ce2fdc, type: 3}
-  - {fileID: 8300000, guid: 1efb29bafcfbef646afb9f14f23d673c, type: 3}
+  - {fileID: 8300000, guid: a5187acc2ea6332499a272a18064a356, type: 3}
+  - {fileID: 8300000, guid: 6e20c5aa941500a4f9d777e4001c9a01, type: 3}
   audioSource: {fileID: 2121385835}
 --- !u!1001 &2121633434
 PrefabInstance:
@@ -6887,7 +6909,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1087494072850080710, guid: fe702cffa4b265a41a1dd14859069887, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3073021604806220795, guid: fe702cffa4b265a41a1dd14859069887, type: 3}
       propertyPath: m_IsActive
