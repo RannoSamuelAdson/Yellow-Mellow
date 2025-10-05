@@ -6,6 +6,8 @@ public class Human : MonoBehaviour
     public Transform goalpoint;
     public float Speed = 3f;
     public QTEManager qteManager; // moved here
+    public GameObject tutorialText;
+    public GameObject sprite;
 
     public bool isWealthy = false; // track if upgraded
 
@@ -62,12 +64,12 @@ public class Human : MonoBehaviour
 
         for (int i = 0; i < flashCount; i++)
         {
-            GetComponent<SpriteRenderer>().color = originalColor;
+            sprite.GetComponent<SpriteRenderer>().color = originalColor;
             yield return new WaitForSeconds(flashDuration / (flashCount * 2));
-            GetComponent<SpriteRenderer>().color = flashColor;
+            sprite.GetComponent<SpriteRenderer>().color = flashColor;
             yield return new WaitForSeconds(flashDuration / (flashCount * 2));
         }
-        GetComponent<SpriteRenderer>().color = Color.yellow;
+        sprite.GetComponent<SpriteRenderer>().color = Color.yellow;
 
         isWealthy = true; // Now start the QTE movement
 
@@ -79,9 +81,9 @@ public class Human : MonoBehaviour
     private void HandleRotation()
     {
         if (goalpoint.position.x < transform.position.x)
-            transform.rotation = Quaternion.Euler(0f, 180f, 0f);
+            sprite.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
         else if (goalpoint.position.x > transform.position.x)
-            transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+            sprite.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
     }
 
     /*private void OnTriggerEnter(Collider other)
@@ -92,7 +94,11 @@ public class Human : MonoBehaviour
             Destroy(other);
         }
     }*/
-
+    public void setTutorialActiveState(bool state)
+    {
+        if (!isWealthy) return;
+        tutorialText.SetActive(state);
+    }
     private void UpgradeToWealthy()
     {
         isWealthy = true;

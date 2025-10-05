@@ -217,7 +217,7 @@ public class QTEManager : MonoBehaviour
             {
                 // Reward player
                 Debug.Log("Player rewarded for successful QTE!");
-                currentWealthyHuman.GetComponent<SpriteRenderer>().color = Color.white;
+                currentWealthyHuman.sprite.GetComponent<SpriteRenderer>().color = Color.white;
                 currentWealthyHuman.isWealthy = false;
                 currentWealthyHuman.Speed *= 1.5f; // Speed up after being caught
             }
