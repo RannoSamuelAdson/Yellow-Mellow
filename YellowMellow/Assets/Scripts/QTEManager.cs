@@ -107,8 +107,8 @@ public class QTEManager : MonoBehaviour
     bool IsLineOverHitZone()
     {
         float lineX = movingLine.anchoredPosition.x;
-        float zoneLeft = hitZone.anchoredPosition.x - hitZone.rect.width / 2f;
-        float zoneRight = hitZone.anchoredPosition.x + hitZone.rect.width / 2f;
+        float zoneLeft = hitZone.anchoredPosition.x - hitZone.rect.width / 2f-0.5f;
+        float zoneRight = hitZone.anchoredPosition.x + hitZone.rect.width / 2f-0.5f;
 
         return lineX >= zoneLeft && lineX <= zoneRight;
     }
@@ -121,8 +121,8 @@ public class QTEManager : MonoBehaviour
         successFX?.Play();
         StartCoroutine(AnimateHitZoneResult(successColor));
         ShowResultText("Perfect!", Color.green);
-        GameObject gainedItem = Instantiate(itemOptions[currentItem], player.transform);
-        /*if (player.stolenItem != null)
+        GameObject gainedItem = Instantiate(itemOptions[currentItem], player.transform.position - new Vector3(0.6f, 0.6f, 0), player.transform.rotation, player.transform);
+        if (player.stolenItem != null)
         {
             ValuableItem gainedItemScript = gainedItem.GetComponent<ValuableItem>();
             ValuableItem existingitemScript = player.stolenItem.GetComponent<ValuableItem>();
@@ -139,7 +139,7 @@ public class QTEManager : MonoBehaviour
                 return;
             }
 
-        }*/
+        }
         player.stolenItem = gainedItem;
         
     }
