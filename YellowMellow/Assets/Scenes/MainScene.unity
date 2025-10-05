@@ -904,8 +904,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Net worth: 0$'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: ca58edeb267b2b644b548f55127ab619, type: 2}
-  m_sharedMaterial: {fileID: 6001716843271085647, guid: ca58edeb267b2b644b548f55127ab619, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 85562403aa7803448b57af8b98216591, type: 2}
+  m_sharedMaterial: {fileID: 5270708937157007425, guid: 85562403aa7803448b57af8b98216591, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1709,6 +1709,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Korvpalli korv
       objectReference: {fileID: 0}
+    - target: {fileID: 6733627350448120802, guid: c24e1088783360f48b479bca986b9518, type: 3}
+      propertyPath: timer
+      value: 
+      objectReference: {fileID: 1941190246}
     - target: {fileID: 6733627350448120802, guid: c24e1088783360f48b479bca986b9518, type: 3}
       propertyPath: netWorthText
       value: 
@@ -3762,7 +3766,7 @@ MonoBehaviour:
   minigameTutorial: {fileID: 1564185745}
   returnTutorial: {fileID: 1846428727}
   QTEmanager: {fileID: 613953720}
-  timer: {fileID: 0}
+  timer: {fileID: 1941190246}
   nest: {fileID: 714191347}
 --- !u!1001 &1420876315
 PrefabInstance:
@@ -4996,6 +5000,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1896061151}
   m_CullTransparentMesh: 1
+--- !u!114 &1941190246 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3087555686752481351, guid: fe702cffa4b265a41a1dd14859069887, type: 3}
+  m_PrefabInstance: {fileID: 1607252066041503523}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 702a2d98b73160f4887b86dd459e3cc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Timer
 --- !u!1001 &1986276178
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5515,6 +5530,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3087555686752481351, guid: fe702cffa4b265a41a1dd14859069887, type: 3}
+      propertyPath: timeRemaining
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 3111928007428743654, guid: fe702cffa4b265a41a1dd14859069887, type: 3}
       propertyPath: player
       value: 
@@ -5631,11 +5650,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6503361279790699788, guid: fe702cffa4b265a41a1dd14859069887, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7454598775718065838, guid: fe702cffa4b265a41a1dd14859069887, type: 3}
       propertyPath: m_Name
       value: Panel
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9133771528197450871, guid: fe702cffa4b265a41a1dd14859069887, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 5137998419570608666, guid: fe702cffa4b265a41a1dd14859069887, type: 3}
