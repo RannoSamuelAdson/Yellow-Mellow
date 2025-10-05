@@ -1,8 +1,10 @@
+using System.Collections;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using static UnityEditor.Progress;
 
 public class Timer : MonoBehaviour
 {
@@ -16,6 +18,8 @@ public class Timer : MonoBehaviour
 
     public bool timerIsRunning = false;
 
+
+
     void Start()
     {
         // Ensure game runs in real-time at start
@@ -26,9 +30,68 @@ public class Timer : MonoBehaviour
         restartButton.onClick.AddListener(Restart);
     }
 
-    private void Restart()
+    public void StartAnimatingText(float timeAdd)
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        timeRemaining += timeAdd; // Add item's value to the timer
+        text.text = "+" + timeAdd.ToString("F0") + "s"; // Display added time
+        StartCoroutine(AnimateText(timeAdd));
+    }
+
+        public TextMeshProUGUI text; // Assign in inspector
+        public float growDuration = 1f;
+        public float maxScale = 1.5f;
+        public float fadeDuration = 2f;
+        public float delayBeforeFade = 1f;
+
+        IEnumerator AnimateText(float timeAdded)
+        {
+            // Reset scale and alpha
+            text.transform.localScale = Vector3.one;
+            Color startColor = text.color;
+            startColor.a = 1;
+            text.color = startColor;
+
+            // Grow the text
+            float elapsedGrow = 0f;
+            while (elapsedGrow < growDuration)
+            {
+                float t = elapsedGrow / growDuration;
+                float scale = Mathf.Lerp(1f, maxScale, t);
+                text.transform.localScale = Vector3.one * scale;
+
+                elapsedGrow += Time.deltaTime;
+                yield return null;
+            }
+
+            text.transform.localScale = Vector3.one * maxScale;
+
+            // Wait before fading
+            yield return new WaitForSeconds(delayBeforeFade);
+
+            // Fade out
+            float elapsedFade = 0f;
+            Color originalColor = text.color;
+            while (elapsedFade < fadeDuration)
+            {
+                float t = elapsedFade / fadeDuration;
+                Color fadedColor = originalColor;
+                fadedColor.a = Mathf.Lerp(1f, 0f, t);
+                text.color = fadedColor;
+
+                elapsedFade += Time.deltaTime;
+                yield return null;
+            }
+
+            // Ensure fully transparent
+            Color finalColor = text.color;
+            finalColor.a = 0f;
+            text.color = finalColor;
+        }
+
+        private void Restart()
+    {
+
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     private void Quit()
@@ -40,7 +103,7 @@ public class Timer : MonoBehaviour
     {
         if (timerIsRunning)
         {
-            if (isCountdown)
+            if (isCountdown && !Player.playerPaused)
             {
                 if (timeRemaining > 0)
                 {

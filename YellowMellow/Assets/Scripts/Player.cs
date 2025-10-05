@@ -135,7 +135,7 @@ public class Player : MonoBehaviour
     {
         item.transform.parent = null;
         item.GetComponent<Rigidbody>().isKinematic = false;
-        item.GetComponent<Rigidbody>().AddForce(rb.linearVelocity.normalized * acceleration*acceleration, ForceMode.Acceleration);
+        item.GetComponent<Rigidbody>().AddForce(rb.linearVelocity.normalized * acceleration, ForceMode.Acceleration);
     } 
 
 }
