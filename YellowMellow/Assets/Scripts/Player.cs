@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.LowLevel;
@@ -105,13 +106,13 @@ public class Player : MonoBehaviour
         {
             facingRight = true;
             playerSprite.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
-            Debug.Log("facing right");
+            //Debug.Log("facing right");
         }
         else if (xVel < -flipThreshold && facingRight)
         {
             facingRight = false;
             playerSprite.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
-            Debug.Log("facing left");
+            //Debug.Log("facing left");
         }
     }
     void ReleaseItem()
@@ -121,14 +122,18 @@ public class Player : MonoBehaviour
             // Trigger when space is released
             if (Input.GetKeyUp(KeyCode.Space))
             {
-                stolenItem.transform.parent = null;
-                stolenItem.GetComponent<Rigidbody>().isKinematic = false;
-                stolenItem.GetComponent<Rigidbody>().AddForce(rb.linearVelocity.normalized * acceleration*acceleration, ForceMode.Acceleration);
+                DropItem(stolenItem);
                 //var droppedItem = Instantiate(StolenItem, transform.position, transform.rotation);
                 stolenItem = null;
 
             }
         }
     }
+    public void DropItem(GameObject item)
+    {
+        item.transform.parent = null;
+        item.GetComponent<Rigidbody>().isKinematic = false;
+        item.GetComponent<Rigidbody>().AddForce(rb.linearVelocity.normalized * acceleration*acceleration, ForceMode.Acceleration);
+    } 
 
 }

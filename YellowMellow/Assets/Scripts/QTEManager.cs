@@ -29,10 +29,10 @@ public class QTEManager : MonoBehaviour
     public Color successColor = Color.green;
     public Color failColor = Color.red;
     private Color originalColor;
-    private bool wasSuccessful = false;
+    public bool wasSuccessful = false;
 
     private bool movingRight = true;
-    private bool isActive = true;
+    public bool isActive = true;
     private Human currentWealthyHuman;
 
     public List<GameObject> itemOptions = new List<GameObject>();
@@ -118,7 +118,26 @@ public class QTEManager : MonoBehaviour
         successFX?.Play();
         StartCoroutine(AnimateHitZoneResult(successColor));
         ShowResultText("Perfect!", Color.green);
-        player.stolenItem = GetRandomItem();
+        GameObject gainedItem = GetRandomItem();
+        if (player.stolenItem != null)
+        {
+            ValuableItem gainedItemScript = gainedItem.GetComponent<ValuableItem>();
+            ValuableItem existingitemScript = player.stolenItem.GetComponent<ValuableItem>();
+
+            if (gainedItemScript.value > existingitemScript.value)
+            {
+                player.DropItem(player.stolenItem);
+                player.stolenItem = gainedItem;
+                return;
+            }
+            else
+            {
+                player.DropItem(gainedItem);
+                return;
+            }
+
+        }
+        player.stolenItem = gainedItem;
         
     }
 
