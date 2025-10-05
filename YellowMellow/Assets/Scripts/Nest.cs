@@ -19,11 +19,12 @@ public class Nest : MonoBehaviour
     {
         if (other.gameObject.TryGetComponent<ValuableItem>(out ValuableItem item))
         {
+            if (other.GetComponent<Rigidbody>().isKinematic) return;
             hoard.Add(item);
             netWorth += item.value;
             Destroy(item.gameObject);
             netWorthText.text = "Net worth: " + netWorth.ToString("F2") + "$";
-            timer.timeRemaining += item.value * 2f; // Add item's value to the timer
+            timer.StartAnimatingText(item.value * 2f);
         }
 
         
