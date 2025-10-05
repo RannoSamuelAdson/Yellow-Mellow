@@ -58,7 +58,7 @@ public class Tutorial : MonoBehaviour
                 {
                     human.setTutorialActiveState(true);
                 }
-                if (Input.GetKeyDown(KeyCode.E)) { 
+                if (QTEmanager.isActive) { 
                     minigameTutorial.SetActive(true);
                     tutorialState = TutorialState.MinigameTutorial;
                     Human[] humans2 = FindObjectsByType<Human>(FindObjectsSortMode.None);
@@ -70,7 +70,7 @@ public class Tutorial : MonoBehaviour
             }
             case TutorialState.MinigameTutorial:
             {
-                if (QTEmanager.wasSuccessful) { 
+                if (Input.GetKeyDown(KeyCode.Space)) { 
                     minigameTutorial.SetActive(false);
                     returnTutorial.SetActive(true);
                     tutorialState = TutorialState.ReturnTutorial;
