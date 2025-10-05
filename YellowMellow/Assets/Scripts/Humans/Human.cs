@@ -8,6 +8,7 @@ public class Human : MonoBehaviour
     public QTEManager qteManager; // moved here
     public GameObject tutorialText;
     public GameObject sprite;
+    public GameObject wealthyIndicator;
 
     public bool isWealthy = false; // track if upgraded
 

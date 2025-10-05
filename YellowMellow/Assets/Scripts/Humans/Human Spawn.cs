@@ -38,6 +38,7 @@ public class HumanSpawn : MonoBehaviour
         if (wealthyChance)
         {
             newHuman.isWealthy = true;
+            newHuman.wealthyIndicator.SetActive(true);
             newHuman.sprite.GetComponent<SpriteRenderer>().color = Color.yellow;
 
         }

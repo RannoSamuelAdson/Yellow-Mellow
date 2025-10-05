@@ -30,10 +30,10 @@ public class SmoothCamera : MonoBehaviour
         horzExtent = vertExtent * Screen.width / Screen.height;
 
         // Calculations assume map is position at the origin
-        minX = horzExtent - mapX / 2.0f;
-        maxX = mapX / 2.0f - horzExtent;
-        minY = vertExtent - mapY / 2.0f + 17;
-        maxY = mapY / 2.0f - vertExtent + 17;
+        minX = horzExtent - mapX / 2.15f;
+        maxX = mapX / 2.15f - horzExtent;
+        minY = vertExtent - mapY / 2.1f + 17;
+        maxY = mapY / 2.15f - vertExtent + 17;
     }
 
     void LateUpdate()
