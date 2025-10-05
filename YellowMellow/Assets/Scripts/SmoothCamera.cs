@@ -33,7 +33,7 @@ public class SmoothCamera : MonoBehaviour
         minX = horzExtent - mapX / 2.15f;
         maxX = mapX / 2.15f - horzExtent;
         minY = vertExtent - mapY / 2.1f + 17;
-        maxY = mapY / 2.15f - vertExtent + 17;
+        maxY = mapY / 2.15f - vertExtent + 12;
     }
 
     void LateUpdate()

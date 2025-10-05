@@ -1,7 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor.Animations;
 using UnityEngine;
 
 public class Human : MonoBehaviour
@@ -13,7 +11,7 @@ public class Human : MonoBehaviour
     public GameObject sprite;
     public GameObject wealthyIndicator;
     public Sprite[] valuableItemSprites; // Array of item sprites
-    public AnimatorController[] animatorControllers; // Reference to Animator Controllers
+    public RuntimeAnimatorController[] animatorControllers; // Reference to Animator Controllers
 
     public bool isWealthy = false; // track if upgraded
     public List<GameObject> itemOptions = new List<GameObject>();
